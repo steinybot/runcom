@@ -2,12 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jasons/.oh-my-zsh
+# export ZSH=/Users/jasons/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="josh"
+# ZSH_THEME="josh"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,9 +51,9 @@ ZSH_THEME="josh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions docker git-extras git-flow jira sbt scala vi-mode)
+# plugins=(git zsh-autosuggestions docker git-extras git-flow jira sbt scala vi-mode)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -86,19 +86,50 @@ source $ZSH/oh-my-zsh.sh
 
 DEFAULT_USER="jasons"
 
-JIRA_URL="http://jira"
-JIRA_RAPID_BOARD="true"
+source /usr/local/share/antigen/antigen.zsh
 
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle aws
+antigen bundle docker
+antigen bundle git
+antigen bundle git-extras
+antigen bundle git-flow
+antigen bundle jira
+antigen bundle npm
+antigen bundle nvm
+antigen bundle rbenv
+antigen bundle sbt
+antigen bundle scala
+antigen bundle vi-mode
+antigen bundle virtualenv
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme josh
+
+# Tell antigen that you're done.
+antigen apply
+
+# Load either work or personal extras.
+WOP_REPO_URL="Steiny69/runcom"
+WOP_WORK_DOMAIN="orion.internal"
+antigen bundle Steiny69/runcom plugins/wop
+
+# Reduce the key timeout.
 KEYTIMEOUT=1
 
+# Fix the forward and backward keys.
 bindkey "^[B" backward-word
 bindkey "^[F" forward-word
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#export NVM_DIR="$HOME/.nvm"
+#. "/usr/local/opt/nvm/nvm.sh"
 
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+#source /Users/jasons/.rvm/scripts/rvm
 
-source /Users/jasons/.rvm/scripts/rvm
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
