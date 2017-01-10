@@ -116,9 +116,11 @@ antigen theme josh
 antigen apply
 
 # Load either work or personal extras.
-WOP_REPO_URL="Steiny69/runcom"
+#WOP_REPO_URL="Steiny69/runcom"
+WOP_REPO_URL="$HOME"
 WOP_WORK_DOMAIN="orion.internal"
-antigen bundle Steiny69/runcom plugins/wop
+#antigen bundle Steiny69/runcom plugins/wop
+antigen bundle /source/runcom plugins/wop
 
 # Reduce the key timeout.
 KEYTIMEOUT=1
