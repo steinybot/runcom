@@ -109,6 +109,9 @@ antigen bundle virtualenv
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+# Fish-like command suggestions.
+antigen bundle zsh-users/zsh-autosuggestions
+
 # Load the theme.
 antigen theme josh
 
@@ -117,10 +120,10 @@ antigen apply
 
 # Load either work or personal extras.
 #WOP_REPO_URL="Steiny69/runcom"
-WOP_REPO_URL="$HOME"
-WOP_WORK_DOMAIN="orion.internal"
+#WOP_REPO_URL="$HOME"
+#WOP_WORK_DOMAIN="orion.internal"
 #antigen bundle Steiny69/runcom plugins/wop
-antigen bundle /source/runcom plugins/wop
+#antigen bundle /source/runcom plugins/wop
 
 # Reduce the key timeout.
 KEYTIMEOUT=1
