@@ -44,6 +44,7 @@
 [tag]
 	; Always sign tags.
 	gpgSign = true
+; Use SSH instead of HTTPS for GitHub so that authentication works properly.
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
 [user]
