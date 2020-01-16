@@ -48,4 +48,6 @@
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
 [user]
+	; Setup name and email for each repository individually using the aliases above.
+    useConfigOnly = true
 	signingKey = TODO
