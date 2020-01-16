@@ -1,0 +1,53 @@
+[alias]
+	; Setup name and email for each repository individually.
+	confighome = !git config user.name \"Jason Pickens\" && git config user.email \"jasonpickensnz@gmail.com\"
+	configwork = !git config user.name \"Jason Pickens\" && git config user.email \"jason.pickens@lightbend.com\"
+	; Commit log as a graph.
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+	; Last commit.
+	last = log -1 --stat
+	; Unstage all staged changes.
+	unstage = reset HEAD --
+[color]
+	ui = true
+[commit]
+	; Always sign commits.
+	gpgSign = true
+[core]
+	editor = vim
+	; Never convert line endings. Get a better text editor.
+	autocrlf = false
+[credential]
+	helper = cache --timeout=3600
+[diff]
+	tool = bcomp
+	guitool = bcomp
+[difftool "bcomp"]
+	cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\"
+	; Windows path.
+	;path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+	trustExitCode = true
+[difftool]
+	prompt = false
+[mergetool]
+	keepBackup = false
+	keepTemporaries = false
+	prompt = false
+[mergetool "bcomp"]
+	; macOS cmd.
+	cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	; Windows path.
+	;path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+	trustExitCode = true
+[push]
+	default = matching
+[tag]
+	; Always sign tags.
+	gpgSign = true
+; Use SSH instead of HTTPS for GitHub so that authentication works properly.
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
+[user]
+	; Setup name and email for each repository individually using the aliases above.
+    useConfigOnly = true
+	signingKey = TODO
