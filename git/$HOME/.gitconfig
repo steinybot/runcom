@@ -1,41 +1,50 @@
 [alias]
-	configwork = !git config user.name \"Jason Pickens\" && git config user.email \"jason@geneious.com\"
+	; Setup name and email for each repository individually.
 	confighome = !git config user.name \"Jason Pickens\" && git config user.email \"jasonpickensnz@gmail.com\"
+	configwork = !git config user.name \"Jason Pickens\" && git config user.email \"jason.pickens@lightbend.com\"
+	; Commit log as a graph.
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+	; Last commit.
 	last = log -1 --stat
-	cp = cherry-pick
-	cl = clone
-	ci = commit
-	st = status -sb
-	br = branch
+	; Unstage all staged changes.
 	unstage = reset HEAD --
-	dc = diff --cached
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
-[push]
-	default = matching
-[core]
-	trustctime = false
-	editor = vim
-	filemode = false
-	autocrlf = false
 [color]
 	ui = true
+[commit]
+	; Always sign commits.
+	gpgSign = true
+[core]
+	editor = vim
+	; Never convert line endings. Get a better text editor.
+	autocrlf = false
 [credential]
 	helper = cache --timeout=3600
-[merge]
-	tool = bc
-[mergetool]
-	keeptemporaries = false
-	keepbackups = false
-	prompt = false
-	trustexitcode = false
-	keepBackup = false
-[user]
-	signingkey = 886F0CE43A3697F8CD5FF3FECCE5AF9811ACDCE4
 [diff]
-	tool = bc
-[difftool "bc"]
-	path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+	tool = bcomp
+	guitool = bcomp
+[difftool "bcomp"]
+	cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\"
+	; Windows path.
+	;path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+	trustExitCode = true
 [difftool]
 	prompt = false
-[mergetool "bc"]
-	path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+[mergetool]
+	keepBackup = false
+	keepTemporaries = false
+	prompt = false
+[mergetool "bcomp"]
+	; macOS cmd.
+	cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	; Windows path.
+	;path = C:\\Program Files\\Beyond Compare 4\\BComp.exe
+	trustExitCode = true
+[push]
+	default = matching
+[tag]
+	; Always sign tags.
+	gpgSign = true
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
+[user]
+	signingKey = TODO
